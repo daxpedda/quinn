@@ -303,6 +303,7 @@ impl<'a> Chunks<'a> {
                 Dir::Uni => self.pending.max_uni_stream_id = true,
                 Dir::Bi => self.pending.max_bi_stream_id = true,
             }
+            should_transmit = true;
         }
 
         // If the stream hasn't finished, we may need to issue stream-level flow control credit
