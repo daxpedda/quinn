@@ -287,10 +287,7 @@ impl<'a> Chunks<'a> {
                     self.state = ChunksState::Finished;
                     Ok(None)
                 } else {
-                    let should_transmit =
-                        Self::done(&mut rs, self.read, self.id, self.streams, self.pending);
-                    self.state = ChunksState::Error(ReadError::Blocked, should_transmit);
-                    self.streams.recv.insert(self.id, rs);
+                    self.state = ChunksState::Readable(rs);
                     Err(ReadError::Blocked)
                 }
             }
