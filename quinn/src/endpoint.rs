@@ -141,6 +141,11 @@ impl Endpoint {
         }
     }
 
+    /// Returns the client configuration used by `connect`
+    pub fn default_client_config(&self) -> Option<&ClientConfig> {
+        self.default_client_config.as_ref()
+    }
+
     /// Set the client configuration used by `connect`
     pub fn set_default_client_config(&mut self, config: ClientConfig) {
         self.default_client_config = Some(config);
