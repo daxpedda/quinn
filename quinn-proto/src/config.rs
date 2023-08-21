@@ -766,6 +766,11 @@ impl ClientConfig {
         }
     }
 
+    /// Get the cryptographic config.
+    pub fn get_crypto(&self) -> &Arc<dyn crypto::ClientConfig> {
+        &self.crypto
+    }
+
     /// Set a custom [`TransportConfig`]
     pub fn transport_config(&mut self, transport: Arc<TransportConfig>) -> &mut Self {
         self.transport = transport;
